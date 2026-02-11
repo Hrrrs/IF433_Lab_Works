@@ -8,13 +8,9 @@ fun main (args: Array<String>) {
 
     println("radius: $radius, area: $area")
 
-    checkSize(area)
+    println(checkSize(area))
+
 }
 
-fun checkSize(area: Double){
-    if (area > 100){
-        println("this is a Big Circle")
-    } else {
-        println("this is a Small Circle")
-    }
-}
+fun checkSize(area: Double): String = if (area > 100) "this is a big circle" else "this is small circle"
+//:String bisa di hapus juga karena Type inference
