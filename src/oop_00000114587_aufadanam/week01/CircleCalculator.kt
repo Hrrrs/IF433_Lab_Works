@@ -1,6 +1,6 @@
 package oop_00000114587_aufadanam.week01
 
-fun main (args: Array<String>) {
+fun main () {
     val radius = 7.0
     val pi = 3.14
 
@@ -12,5 +12,4 @@ fun main (args: Array<String>) {
 
 }
 
-fun checkSize(area: Double): String = if (area > 100) "this is a big circle" else "this is small circle"
-//:String bisa di hapus juga karena Type inference
+fun checkSize(area: Double) = if (area > 100) "this is a big circle" else "this is small circle"
