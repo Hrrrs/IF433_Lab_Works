@@ -1,21 +1,29 @@
 package oop_00000114587_aufadanam.week05
 
 fun main() {
-    // 1. Instansiasi objek dengan parameter awal
     val myWallet = EWallet(accountName = "Aufa Wallet", balance = 50000.0)
     val myCard = CreditCard(accountName = "Aufa Card", limit = 100000.0)
 
-    // 2. Memasukkan keduanya ke dalam List bertipe PaymentMethod
-    // Di sini terjadi 'Upcasting' otomatis
     val paymentMethods: List<PaymentMethod> = listOf(myWallet, myCard)
 
-    println("=== Simulasi Pembayaran E-Commerce ===")
-    println("Tagihan: Rp75000.0\n")
+    println("=== Simulasi Pembayaran dengan Smart Casting ===")
 
-    // 3. Perulangan (Iteration) untuk memproses pembayaran
     for (method in paymentMethods) {
-        // Kotlin secara cerdas memanggil fungsi override yang tepat
-        // berdasarkan objek aslinya (Dynamic Dispatch)
+        println("Mencoba pembayaran dengan akun: ${method.accountName}")
+
+        // 1. Coba pembayaran pertama kali
         method.processPayment(75000.0)
+
+        // 2. Tantangan Smart Casting: Cek apakah ini EWallet
+        if (method is EWallet) {
+            println("[Sistem] Mendeteksi E-Wallet. Mencoba Top-Up otomatis...")
+
+            // Di sini 'method' sudah di-smart cast menjadi EWallet
+            // Kita bisa memanggil .topUp() yang tidak ada di PaymentMethod
+            method.topUp(50000.0)
+
+            println("[Sistem] Mencoba ulang pembayaran setelah Top-Up:")
+            method.processPayment(75000.0) // Seharusnya sekarang saldo 50rb + 50rb = 100rb
+        }
     }
 }
