@@ -1,6 +1,5 @@
 package oop_00000114587_aufadanam.week06
 
-// CHECKPOINT 17 & 18: create SmartHomeHub logic & implement advanced smart casting
 class SmartHomeHub {
     private val devices = mutableListOf<SmartDevice>()
 
