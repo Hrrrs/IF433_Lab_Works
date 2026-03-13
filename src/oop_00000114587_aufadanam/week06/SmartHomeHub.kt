@@ -1,20 +1,20 @@
 package oop_00000114587_aufadanam.week06
 
-class SmartCCTV(
-    override val id: String,
-    override val name: String
-) : SmartDevice, Switchable, Recordable {
+// CHECKPOINT 17 & 18: create SmartHomeHub logic & implement advanced smart casting
+class SmartHomeHub {
+    private val devices = mutableListOf<SmartDevice>()
 
-    override fun turnOn() {
-        println("CCTV $name aktif.")
-        startRecord() // Memanggil otomatis saat menyala
+    fun addDevice(device: SmartDevice) {
+        devices.add(device)
     }
 
-    override fun turnOff() {
-        println("CCTV $name dinonaktifkan.")
-    }
-
-    override fun startRecord() {
-        println("CCTV $name: Mulai merekam video...")
+    fun turnOffAllSwitches() {
+        println("\n--- Mematikan Semua Perangkat ---")
+        for (device in devices) {
+            // Smart Casting menggunakan 'is'
+            if (device is Switchable) {
+                device.turnOff()
+            }
+        }
     }
 }
