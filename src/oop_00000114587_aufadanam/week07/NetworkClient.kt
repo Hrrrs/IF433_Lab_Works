@@ -1,6 +1,7 @@
 package oop_00000114587_aufadanam.week07
 
 class NetworkClient private constructor(val url: String) {
+
     companion object {
         const val BASE_URL = "https://api.umn.ac.id" // shared constant
 
