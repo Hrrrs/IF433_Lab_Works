@@ -34,4 +34,9 @@ fun main() {
 //    println(uiMessage)
     GameManager.startGame()
     GameManager.startGame()
+    // 8. Simulasi Factory & Enum
+    println("Drop chance Legendary: ${ItemRarity.LEGENDARY.dropChance}%")
+
+    val starterWeapon = Weapon.forgeStarterSword()
+    println("Senjata awal: ${starterWeapon.item.name}, Damage: ${starterWeapon.item.damage}, Durability: ${starterWeapon.durability}")
 }
