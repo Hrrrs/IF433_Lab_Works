@@ -26,8 +26,10 @@ fun main() {
     println("\n=== TEST SEALED CLASS ===")
     val response: ApiResponse = ApiResponse.Success("Data berhasil ditarik!")
 
-    val uiMessage = when (response) {
+    val uiMessage = when(response) {
+        is ApiResponse.Loading -> "Tampilkan Spinner"
         is ApiResponse.Success -> "Tampilkan : ${response.data}"
         is ApiResponse.Error -> "Tampilkan : ${response.message}"
     }
+    println(uiMessage)
 }
