@@ -61,4 +61,10 @@ fun main() {
     } catch (e: IllegalArgumentException) {
         println(e.message) // mencetak pesan custom kita bukan crash buta
     }
+
+    println("\n=== TEST JAVA INTEROP ===")
+    val javaResponse = LegacyJavaAPI.fetchServerStatus()
+    //kita menekan tombol !! karena KITA TAHU implementasi Javanya aman
+    val statusLength = javaResponse.length
+    println("status dari Java: $javaResponse(Length: $statusLength)")
 }
