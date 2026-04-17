@@ -15,10 +15,12 @@ fun main() {
         try {
             val product = parser.parseProduct(raw)
             product?.let {
+                println("berhasil parse : $it")
                 parser.checkout(it)
             }
         } catch (e: IllegalArgumentException) {
             println("Peringatan Data Korup: ${e.message}")
         }
     }
+    //Main berhasil dijalankan dan sesuai
 }
