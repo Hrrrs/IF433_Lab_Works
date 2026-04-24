@@ -33,5 +33,5 @@ fun main() {
 
     worstPerformersString.forEach { println(it) }
 
-//    println(uniquePairs)
+    println(uniquePairs)
 }
