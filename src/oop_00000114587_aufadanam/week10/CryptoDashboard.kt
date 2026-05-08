@@ -25,4 +25,12 @@ fun main() {
         println("ID: ${tx.id} | Jumlah: ${tx.amount}")
     }
     println()
+
+    //nambah random buat commit testing
+    println("--- Hasil Pencarian Koin 'BT' ---")
+    val searchResult = coinRepo.searchByName("BT")
+    searchResult.forEach { coin ->
+        println("Ditemukan: ${coin.name}")
+    }
+    // txRepo.searchByName("TX") -> KODE INI AKAN ERROR (Sesuai constraint, karena Transaction tidak punya nama)
 }
