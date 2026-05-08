@@ -1,4 +1,4 @@
-package oop_00000114587_aufadanam
+package oop_00000114587_aufadanam.week11
 
 fun String.addGreeting (): String {
     return "Hello $this"
