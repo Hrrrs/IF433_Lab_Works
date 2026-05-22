@@ -46,3 +46,14 @@ fun loadTrades(path: String): List<TradeRecord> {
         emptyList()
     }
 }
+
+fun main() {
+    val path = "crypto_trades.csv"
+
+    val mockTrades = listOf(
+        TradeRecord(1, "BTCUSDT", "Long", 100.0, 35.5),
+        TradeRecord(2, "ETHUSDT", "Short", 50.0, -12.2)
+    )
+
+    saveTrades(mockTrades, path)
+}
