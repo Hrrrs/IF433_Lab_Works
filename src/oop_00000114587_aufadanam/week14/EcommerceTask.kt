@@ -44,3 +44,34 @@ class EmailNotifier : NotificationService {
         println("Email terkirim: Pesanan $itemName Anda telah dikonfirmasi!")
     }
 }
+
+// Interface & Implementation Pricing Strategy
+interface PricingStrategy {
+    fun calculate(price: Double): Double
+}
+
+class RegularPricing : PricingStrategy {
+    override fun calculate(price: Double): Double = price
+}
+
+class VipPricing : PricingStrategy {
+    override fun calculate(price: Double): Double = price * 0.90
+}
+
+// Main class yang sudah disuntikkan abstraksi via Constructor (DIP diterapkan)
+class SafeOrderProcessor(
+    private val repo: OrderRepository,
+    private val notifier: NotificationService
+) {
+    fun processOrder(itemName: String, basePrice: Double, strategy: PricingStrategy, customerType: String) {
+        val finalPrice = strategy.calculate(basePrice)
+
+        println("Memproses pesanan $itemName seharga $finalPrice")
+
+        // Menyerahkan tugas ke repository
+        repo.saveOrder(itemName, finalPrice, customerType)
+
+        // Menyerahkan tugas ke service notifikasi
+        notifier.sendNotification(itemName)
+    }
+}
