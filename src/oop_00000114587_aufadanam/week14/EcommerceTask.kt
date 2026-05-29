@@ -22,3 +22,25 @@ class BadOrderProcessor {
         println("Email terkirim: Pesanan $itemName Anda telah dikonfirmasi!")
     }
 }
+
+// Interface & Implementation Database
+interface OrderRepository {
+    fun saveOrder(itemName: String, finalPrice: Double, customerType: String)
+}
+
+class CsvOrderRepository : OrderRepository {
+    override fun saveOrder(itemName: String, finalPrice: Double, customerType: String) {
+        File("orders.csv").appendText("$itemName, $finalPrice, $customerType\n")
+    }
+}
+
+// Interface & Implementation Notification
+interface NotificationService {
+    fun sendNotification(itemName: String)
+}
+
+class EmailNotifier : NotificationService {
+    override fun sendNotification(itemName: String) {
+        println("Email terkirim: Pesanan $itemName Anda telah dikonfirmasi!")
+    }
+}
